@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度搜索</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.5); /* 半透明的白色 */
+        /* 或者使用接近浏览器默认背景的颜色 */
+        /* background-color: #f0f0f0; */ /* 浅灰色，更不明显 */
+    }
+        .search-container {
+            width: 500px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center; /* 使内容在容器中居中 */
+            position: relative; /* 为图片定位做准备 */
+        }
+        .search-container img {
+            width: 100px; /* 设置图片宽度 */
+            height: auto; /* 保持图片原始宽高比 */
+            display: block; /* 消除图片下方的空白 */
+            margin: 0 auto 20px; /* 上下自动居中，底部添加一些间距 */
+        }
+        input[type="text"] {
+            width: calc(100% - 20px); /* 稍微减少宽度以适应可能的padding或border */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px; /* 与按钮之间添加间距 */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #0000FF; /* 修改背景颜色为蓝色 */
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0000CC; /* 稍微修改hover颜色以区分 */
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <img src="https://bkimg.cdn.bcebos.com/pic/eaf81a4c510fd9f9d72a2d09cd60c32a2834349b0e37?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080" alt="Search Icon">
+        <input type="text" id="searchQuery" placeholder="输入搜索内容..." onkeydown="handleKeyPress(event)">
+        <button onclick="searchBaidu()">搜索</button>
+    </div>
+
+    <script>
+        function searchBaidu() {
+            var query = document.getElementById('searchQuery').value;
+            if (query) {
+                // 先显示提示
+                alert('你真以为这是百度？');
+                // 再进行页面跳转
+                var url = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+                window.location.href = url;
+            } else {
+                alert('请输入搜索内容！');
+            }
+        }
+        // 新增函数以处理键盘事件
+        function handleKeyPress(event) {
+            if (event.key === "Enter") { // 按下回车键
+                searchBaidu(); // 调用搜索函数
+            }
+        }
+    </script>
+</body>
+</html>
